@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<decorators defaultdir="/template/">
+
+    <excludes>
+        <pattern>/assets/*</pattern>
+    </excludes>
+
+    <decorator name="phone" page="phone_master_template.jsp">
+        <pattern>/phone/*</pattern>
+    </decorator>
+
+</decorators>
