@@ -27,7 +27,7 @@
             </tr>
 
             <tbody id="tbody"></tbody>
-            <input type="submit" class="btn btn-primary" value="批量删除">
+            <%--<input type="submit" class="btn btn-primary" value="批量删除">--%>
         </table>
     </form>
 </div>
@@ -37,7 +37,7 @@
 <script src="/assets/js/jquery-1.11.3.min.js" type="text/javascript"></script>
 <script>
 
-    function assin(data){
+    function assin(data) {
         var tbody = $("#tbody");
         $.each(data, function (index, obj) {
             tbody.append("<tr>"
@@ -49,22 +49,26 @@
                 + "<td>" + obj.press + "</td>"
                 + "<td>" + obj.cpu + "</td>"
                 + "<td>"
-                + "<a href='/phone/PhoneDeleteServlet?id=" + obj.id + "'>删除</a> "
+                //+ "<a href='/phone/PhoneDeleteServlet?id=" + obj.id + "'>删除</a> "
                 //+ "<a href='#myModal' data-toggle='modal' data-id='"+obj.id+"'>修改</a>"
-                + "<a href='#myModal' onclick='update(" + obj.id + ")' data-toggle='modal''>修改</a>"
+                + "<input type='button' value='删除' class='btn btn-outline-danger btn-sm' onclick='del(" + obj.id + ")'/> "
+                //+ "<a href='#myModal' onclick='update(" + obj.id + ")' data-toggle='modal''>修改</a>"
+                + "<input type='button' value='修改' class='btn btn-outline-secondary btn-sm' onclick='update(" + obj.id + ")' data-toggle='modal' data-target='#myModal'/> "
                 + "</td>"
                 + "</tr>")
         })
     }
 
-    $(function () {
+    function init() {
         $.ajax({
             method: "post",
             url: "/phone/PhoneListServlet"
         }).done(function (data) {
             assin(data);
         })
-    });
+    }
+
+    init();
 
     function selectBook() {
         var byName = $("#byName").val();
@@ -77,6 +81,20 @@
             assin(data);
         })
     }
+
+    function del(id) {
+        if (confirm("你确定要删除?")) {
+            $.ajax({
+                method: "get",
+                url: "/phone/PhoneDeleteServlet",
+                data: {id: id}
+            }).done(function (data) {
+                $("table tr:gt(0)").remove();
+                init();
+            })
+        }
+    }
+
 </script>
 </body>
 </html>

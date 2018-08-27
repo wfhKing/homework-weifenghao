@@ -3,12 +3,12 @@
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="/phone/PhoneListServlet">
+                <a class="nav-link active" id="list" href="/phone/PhoneListServlet">
                     <span data-feather="home"></span>手机列表
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/phone/PhoneAddServlet">
+                <a class="nav-link" id="add" href="/phone/PhoneAddServlet">
                     <span data-feather="file"></span>
                     进货
                 </a>

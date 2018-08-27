@@ -36,5 +36,11 @@
     </form>
 </div>
 
+<script src="/assets/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+<script>
+    $("#list").removeClass("nav-link active");
+    $("#list").addClass("nav-link");
+    $("#add").addClass("nav-link active");
+</script>
 </body>
 </html>
